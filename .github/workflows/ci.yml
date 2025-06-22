@@ -1,0 +1,40 @@
+name: DevOps Final Project CI
+run-name: ${{ github.actor }} is running CI for the Reminder  
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-ci:
+    name: CI – Lint & Test for Event Reminder App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Workflow triggered
+        run: echo "Triggered by ${{ github.event_name }} on branch ${{ github.ref }}"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Create .env file
+        run: |
+          echo "MONGO_URL=${{ secrets.MONGO_URL }}" > .env
+
+      - name: Set executable permission for ESLint
+        run: chmod +x node_modules/.bin/eslint
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Set executable permission for Jest
+        run: chmod +x node_modules/.bin/jest
+
+      - name: Run tests
+        run: npm test
+
+      - name: CI complete
+        run: echo "CI workflow finished for ${{ github.repository }}"
