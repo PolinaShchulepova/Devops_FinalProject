@@ -25,4 +25,4 @@ jobs:
         run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"
 
       - name: Done
-        run: echo "CD workflow finished successfully and deployed to Render!"
+        run: echo "CD workflow finished successfully and deployed to Render"
