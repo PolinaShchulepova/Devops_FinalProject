@@ -2,7 +2,7 @@ name: CD – Deploy Reminder App
 
 on:
   push:
-    branches: [ main ]  
+    branches: [ doorBranch ]  
 
 jobs:
   deploy:
