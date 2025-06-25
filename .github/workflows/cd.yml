@@ -2,7 +2,7 @@ name: CD – Deploy Reminder App
 
 on:
   push:
-    branches: [ polinasBranch ]  
+    branches: [ main ]  
 
 jobs:
   deploy:
@@ -26,4 +26,3 @@ jobs:
 
       - name: Done
         run: echo "CD workflow finished successfully and deployed to Render"
-        
